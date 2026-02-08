@@ -346,7 +346,7 @@
   <div class="banner">❓ Confused What Gift to Choose? Ask Our Gift Expert</div>
   <div style="margin-top:20px;text-align:center;">
     <p style="margin-bottom:15px;font-size:18px;">Not sure which gift is right by age, budget or occasion?</p>
-    <a class="btn" href="https://wa.me/917065968597" target="_blank" style="font-size:16px;padding:14px 22px;border-radius:30px;">
+    <a class="btn" href="https://wa.me/91XXXXXXXXXX" target="_blank" style="font-size:16px;padding:14px 22px;border-radius:30px;">
       💬 Chat on WhatsApp
     </a>
     <p style="margin-top:10px;font-size:13px;color:#555;">Click to chat directly with our gift support expert.</p>
@@ -411,6 +411,64 @@
     </div>
   </div>
 </footer>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/91XXXXXXXXXX?text=Hi%20I%20need%20help%20choosing%20a%20gift" target="_blank" style="position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:14px 18px;border-radius:40px;font-weight:600;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,0.25);z-index:999;">
+  💬 WhatsApp Help
+</a>
+
+<!-- SIMPLE GIFT QUIZ SECTION -->
+<section id="quiz" style="max-width:900px;margin:60px auto;padding:30px 20px;background:white;border-radius:18px;box-shadow:0 4px 14px rgba(0,0,0,0.08);">
+  <h2 style="margin-bottom:15px;">🎯 Not Sure? Take Quick Gift Quiz</h2>
+  <p style="margin-bottom:20px;">Answer 3 quick questions and send to our expert on WhatsApp.</p>
+
+  <form onsubmit="sendQuizToWhatsapp(event)">
+    <label>Age Group:</label><br>
+    <select id="q_age" style="padding:10px;margin:8px 0 16px 0;width:100%;border-radius:8px;">
+      <option>0–1</option>
+      <option>1–3</option>
+      <option>4–6</option>
+      <option>7–9</option>
+      <option>10–12</option>
+      <option>Teens</option>
+      <option>Adult</option>
+    </select>
+
+    <label>Budget Range:</label><br>
+    <select id="q_budget" style="padding:10px;margin:8px 0 16px 0;width:100%;border-radius:8px;">
+      <option>Under ₹500</option>
+      <option>₹500–₹1000</option>
+      <option>₹1000–₹3000</option>
+      <option>₹3000+</option>
+    </select>
+
+    <label>Occasion:</label><br>
+    <select id="q_occ" style="padding:10px;margin:8px 0 16px 0;width:100%;border-radius:8px;">
+      <option>Birthday</option>
+      <option>Return Gift</option>
+      <option>Festival</option>
+      <option>Anniversary</option>
+      <option>Other</option>
+    </select>
+
+    <button class="btn" type="submit">Get Suggestion on WhatsApp</button>
+  </form>
+</section>
+
+<script>
+function sendQuizToWhatsapp(e){
+  e.preventDefault();
+  var age = document.getElementById('q_age').value;
+  var budget = document.getElementById('q_budget').value;
+  var occ = document.getElementById('q_occ').value;
+
+  var msg = `Hi, I need a gift suggestion.%0AAge Group: ${age}%0ABudget: ${budget}%0AOccasion: ${occ}`;
+  window.open(`https://wa.me/91XXXXXXXXXX?text=${msg}`, '_blank');
+}
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
