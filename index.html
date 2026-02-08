@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GiftsByAge – Find the Perfect Gift by Age</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+    body { background: #fafafa; color: #222; }
+    header {
+      background: linear-gradient(90deg,#ff7a18,#ffb347);
+      padding: 20px;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav {
+      display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: auto;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .logo { font-size: 24px; font-weight: 700; }
+    .nav a { color: white; text-decoration: none; margin-left: 14px; font-size: 14px; }
+
+    .hero {
+      background: url('https://images.unsplash.com/photo-1513883049090-d0b7439799bf?q=80&w=1400') center/cover;
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 40px 20px;
+    }
+    .hero-box {
+      background: rgba(0,0,0,0.55);
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 820px;
+      width: 100%;
+    }
+    .hero h1 { font-size: 36px; margin-bottom: 10px; }
+    .hero p { font-size: 16px; margin-bottom: 20px; }
+
+    .age-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(130px,1fr));
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .age-buttons a {
+      padding: 12px;
+      border-radius: 30px;
+      border: none;
+      background: #ffb347;
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: none;
+      color: #222;
+      display: inline-block;
+    }
+
+    section { max-width: 1200px; margin: 50px auto; padding: 0 20px; }
+    section h2 { font-size: 26px; margin-bottom: 20px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: .2s;
+    }
+    .card:hover { transform: translateY(-4px); }
+    .card img { width: 100%; height: 180px; object-fit: cover; }
+    .card-body { padding: 14px; }
+    .price { font-weight: 700; margin: 6px 0; }
+    .badge {
+      display: inline-block;
+      background: #ffe0b2;
+      padding: 4px 8px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 14px;
+      background: #ff7a18;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+
+    .banner {
+      background: linear-gradient(90deg,#ff9966,#ff5e62);
+      color: white;
+      padding: 30px;
+      border-radius: 18px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 20px;
+      text-align: center;
+    }
+    .feature {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+
+    footer {
+      background: #222;
+      color: #bbb;
+      padding: 40px 20px;
+      margin-top: 60px;
+    }
+    footer .grid { grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); }
+    footer h4 { color: white; margin-bottom: 10px; }
+    footer a { color: #bbb; text-decoration: none; display: block; margin-bottom: 6px; font-size: 14px; }
+
+    .search-bar {
+      margin-top: 16px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 12px;
+      border-radius: 30px;
+      border: none;
+      min-width: 220px;
+    }
+    .search-bar button {
+      padding: 12px 18px;
+      border-radius: 30px;
+      border: none;
+      background: #ff7a18;
+      color: white;
+      cursor: pointer;
+    }
+
+    @media (max-width:600px) {
+      .hero h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">🎁 GiftsByAge</div>
+    <div>
+      <a href="#ages">Gifts by Age</a>
+      <a href="#occasion">Occasions</a>
+      <a href="#combos">Combos</a>
+      <a href="#blog">Gift Guide</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-box">
+    <h1>Find the Perfect Gift by Age</h1>
+    <p>From Newborn to Adults — Smart Affiliate Gift Discovery Platform</p>
+
+    <div class="search-bar">
+      <input placeholder="Search gifts, age, interest...">
+      <button>Search 🔍</button>
+    </div>
+
+    <!-- AGE GROUPS 0 TO ADULT -->
+    <div class="age-buttons">
+      <a href="#age0">0–1 Year</a>
+      <a href="#age1">1–3 Years</a>
+      <a href="#age2">4–6 Years</a>
+      <a href="#age3">7–9 Years</a>
+      <a href="#age4">10–12 Years</a>
+      <a href="#age5">13–17 Teens</a>
+      <a href="#age6">18–25</a>
+      <a href="#age7">26–40</a>
+      <a href="#age8">40+</a>
+    </div>
+  </div>
+</section>
+
+<!-- AGE SECTIONS -->
+
+<section id="age0">
+  <h2>Gifts for 0–1 Year (Newborn)</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=800">
+      <div class="card-body">
+        <div class="badge">0–1 Year</div>
+        <h3>Baby Comfort Gift Set</h3>
+        <div class="price">₹999</div>
+        <p>Soft toys & essentials.</p>
+        <a class="btn" href="YOUR_AMAZON_LINK" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="age1">
+  <h2>Gifts for 1–3 Years</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1585386959984-a41552231658?q=80&w=800">
+      <div class="card-body">
+        <div class="badge">1–3 Years</div>
+        <h3>Toddler Activity Toy</h3>
+        <div class="price">₹799</div>
+        <p>Motor skill development toy.</p>
+        <a class="btn" href="YOUR_AMAZON_LINK" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="age2">
+  <h2>Gifts for 4–6 Years</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?q=80&w=800">
+      <div class="card-body">
+        <div class="badge">4–6 Years</div>
+        <h3>Creative Learning Kit</h3>
+        <div class="price">₹1,199</div>
+        <p>Fun + education combo.</p>
+        <a class="btn" href="YOUR_AMAZON_LINK" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="age3">
+  <h2>Gifts for 7–9 Years</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800">
+      <div class="card-body">
+        <div class="badge">7–9 Years</div>
+        <h3>STEM Science Kit</h3>
+        <div class="price">₹1,499</div>
+        <a class="btn" href="YOUR_AMAZON_LINK" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="age4">
+  <h2>Gifts for 10–12 Years</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800">
+      <div class="card-body">
+        <div class="badge">10–12 Years</div>
+        <h3>Creative Gadget Kit</h3>
+        <div class="price">₹1,899</div>
+        <a class="btn" href="YOUR_AMAZON_LINK" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="age5">
+  <h2>Gifts for Teens (13–17)</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=800">
+      <div class="card-body">
+        <div class="badge">Teens</div>
+        <h3>Trendy Tech Gift</h3>
+        <div class="price">₹2,499</div>
+        <a class="btn" href="YOUR_AMAZON_LINK" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="age6">
+  <h2>Gifts for 18–25</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=800">
+      <div class="card-body">
+        <div class="badge">18–25</div>
+        <h3>Smart Accessories</h3>
+        <div class="price">₹2,199</div>
+        <a class="btn" href="YOUR_AMAZON_LINK" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="age7">
+  <h2>Gifts for 26–40</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800">
+      <div class="card-body">
+        <div class="badge">26–40</div>
+        <h3>Premium Gift Hamper</h3>
+        <div class="price">₹3,499</div>
+        <a class="btn" href="YOUR_AMAZON_LINK" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="age8">
+  <h2>Gifts for 40+ Adults</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659?q=80&w=800">
+      <div class="card-body">
+        <div class="badge">40+</div>
+        <h3>Wellness Gift Set</h3>
+        <div class="price">₹2,999</div>
+        <a class="btn" href="YOUR_AMAZON_LINK" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHATSAPP EXPERT HELP SECTION -->
+<section>
+  <div class="banner">❓ Confused What Gift to Choose? Ask Our Gift Expert</div>
+  <div style="margin-top:20px;text-align:center;">
+    <p style="margin-bottom:15px;font-size:18px;">Not sure which gift is right by age, budget or occasion?</p>
+    <a class="btn" href="https://wa.me/917065968597" target="_blank" style="font-size:16px;padding:14px 22px;border-radius:30px;">
+      💬 Chat on WhatsApp
+    </a>
+    <p style="margin-top:10px;font-size:13px;color:#555;">Click to chat directly with our gift support expert.</p>
+  </div>
+</section>
+
+<section>
+  <div class="banner">🔥 Age-Based Amazon Affiliate Gift Collections — Updated Regularly</div>
+</section>
+
+<section id="occasion">
+  <h2>Gifts by Occasion</h2>
+  <div class="grid">
+    <div class="feature">🎂 Birthday Gifts</div>
+    <div class="feature">🎉 Return Gifts</div>
+    <div class="feature">🪔 Festival Gifts</div>
+    <div class="feature">💍 Anniversary Gifts</div>
+  </div>
+</section>
+
+<section id="combos">
+  <h2>Most Loved Gift Combos</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1512909006721-3d6018887383?q=80&w=800">
+      <div class="card-body">
+        <h3>Family Gift Combo Box</h3>
+        <div class="price">₹4,999</div>
+        <p>High value curated bundle.</p>
+        <a class="btn" href="YOUR_AMAZON_LINK" target="_blank">Buy on Amazon</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blog">
+  <h2>Gift Guide & Blog (SEO Pages)</h2>
+  <div class="grid">
+    <div class="feature">Best Gifts for Newborn Babies</div>
+    <div class="feature">Top Gifts Under ₹1000 by Age</div>
+    <div class="feature">Best Educational Gifts by Age</div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="grid">
+    <div>
+      <h4>GiftsByAge</h4>
+      <p>We help you discover the right gift by age. Simple & smart gifting.</p>
+      <p style="margin-top:10px;font-size:13px;">Affiliate Disclosure: We may earn a small commission from purchases made through our links at no extra cost to you.</p>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
+      <a href="#">FAQs</a>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms & Conditions</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
